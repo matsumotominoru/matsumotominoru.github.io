@@ -29,6 +29,7 @@ If you omit "--global", you can apply this to the local repogitory in the curren
 ### Commit Date
 
 - Set AuthorDate(mainly used date)
+Alter author date in commit object, do not alter committer date in commit object or commit date in `.git\logs`.
 `$ git commit -m "Test" --date=format:short:2006-07-03`
 
 - View two dates
@@ -50,6 +51,26 @@ For more similar command, read [How to have 'git log' show filenames like 'svn l
 `$ git reset --hard ToBeHeadedToCommitSHA`
 
 For git reset details, read [Git Reset](https://www.atlassian.com/git/tutorials/undoing-changes/git-reset)
+
+`$ git diff COMMIT1_SHA1..COMMIT2_SHA1 --name-only`
+
+### View git objects
+
+Git object is blob(file contents) or tree or commit.
+Each git object is assigned 40-digit SHA-1 ID and stored in `.git\objects`. First two digit of SHA-1 is directory name.
+We can get object content by
+`$ git cat-file -p [object_sha_1_40_digit]`
+
+Commit object SHA-1 ID is viewed by 
+`$ git log --all`
+or located in `.git\logs`.
+
+### Unpack packfiles
+
+Move .pack file to top directory in the repo.(empty pack directory)
+Run following command
+`$ git unpack-objects < *.pack`
+Objects will be expanded in `.git\objects`.
 
 ## GitHub CLI
 
