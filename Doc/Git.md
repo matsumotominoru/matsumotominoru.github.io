@@ -38,6 +38,7 @@ Alter author date in commit object, do not alter committer date in commit object
 ### Get a deleted or modified file from specified git commit
 
 `$ git checkout CommitHash -- FilePath`
+Restored files will be staged. (Head will move to specified commit when omitting `-- FilePath` )
 For detail, read [Oh shit, I need to undo my changes to a file!](https://ohshitgit.com/#undo-a-file)
 
 ### Get changed files only (omit diff)
@@ -53,6 +54,8 @@ For more similar command, read [How to have 'git log' show filenames like 'svn l
 For git reset details, read [Git Reset](https://www.atlassian.com/git/tutorials/undoing-changes/git-reset)
 
 `$ git diff COMMIT1_SHA1..COMMIT2_SHA1 --name-only`
+
+git diff filepath
 
 ### View git objects
 
@@ -84,3 +87,17 @@ Objects will be expanded in `.git\objects`.
 ### Get following users list
 
 `$ curl https://api.github.com/users/{userName}/following`
+
+
+`$ git reflog` read content from `.git\logs\refs\heads\main`
+
+create new branch from the commit
+`$ git branch some-new-branch-name`
+switch to another branch
+`$ git checkout some-new-branch-name`
+
+コンフリクト解消
+自分の変更は新規にブランチを作成して反映する。
+もとのブランチに戻る
+git pullする
+自分の変更を反映する。
